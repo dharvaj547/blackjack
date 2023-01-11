@@ -14,6 +14,8 @@ Deck::Deck()
             cards.push_back(Card(static_cast<Suit>(i), static_cast<Rank>(j)));
         }
     }
+
+    shuffle();
 }
 
 void Deck::shuffle()
