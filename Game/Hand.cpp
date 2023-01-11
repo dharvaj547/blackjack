@@ -17,3 +17,17 @@ int Hand::getTotal() const
 
     return total;
 }
+
+void Hand::printHand() {
+    std::cout << "[";
+
+    for (auto it = cards.begin(); it != cards.end(); ++it) {
+        std::cout << *it;
+        if (std::next(it) != cards.end()) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "]\n";
+}
+
+
