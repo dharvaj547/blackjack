@@ -15,7 +15,7 @@ public:
     void addCard(Card c);
     int getTotal() const;
     void printHand();
-    void clearHand();
+    void clearHand();   
 };
 
 #endif /* HAND_HPP */
