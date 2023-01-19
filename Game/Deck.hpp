@@ -9,10 +9,10 @@ class Deck
 {
 private:
   std::vector<Card> cards;
+  void shuffle();
 
 public:
   Deck();
-  void shuffle();
   Card dealCard();
 };
 

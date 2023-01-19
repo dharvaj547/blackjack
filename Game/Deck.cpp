@@ -2,16 +2,19 @@
 #include <random>
 #include "Deck.hpp"
 
-Deck::Deck() 
+Deck::Deck()
 {
-    // TODO:MAKE THIS POSSIBLE FOR MULTIPLE DECKS
-
-    // initialize the deck with one of each card
+    // number of decks 
     for (int i = 0; i < 4; i++)
     {
-        for (int j = 0; j < 13; j++)
+        // suit
+        for (int j = 0; j < 4; j++)
         {
-            cards.push_back(Card(static_cast<Suit>(i), static_cast<Rank>(j)));
+            // rank
+            for (int k = 0; k < 13; k++)
+            {
+                cards.push_back(Card(static_cast<Suit>(i), static_cast<Rank>(j)));
+            }
         }
     }
 
