@@ -18,9 +18,9 @@ int Hand::getTotal() const
     return total;
 }
 
-void Hand::printHand() 
+void Hand::printHand(std::string name) const
 {
-    std::cout << "[";
+    std::cout << name << " drew [";
 
     for (auto it = cards.begin(); it != cards.end(); ++it) {
         std::cout << *it;
@@ -29,6 +29,21 @@ void Hand::printHand()
         }
     }
     std::cout << "]\n";
+
+    printTotal(name);
+}
+
+void Hand::printFirstHand() const 
+{
+    std::cout << "Dealer drew [";
+    std::cout << cards[0];
+    std::cout << "] + 1 face down card\n";
+    printTotal();
+}
+
+void Hand::printTotal(std::string name) const
+{
+    std::cout << name << "'s total: " << getTotal() << "\n";
 }
 
 void Hand::clearHand() 

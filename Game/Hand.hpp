@@ -14,7 +14,9 @@ public:
     Hand();
     void addCard(Card c);
     int getTotal() const;
-    void printHand();
+    void printHand(std::string = "Dealer") const;
+    void printFirstHand() const;
+    void printTotal(std::string = "Dealer") const;
     void clearHand();   
 };
 
