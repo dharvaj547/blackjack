@@ -14,6 +14,7 @@ private:
     int playerScore;
     int dealerScore;
     int playerChips;
+    int betAmount;
     std::string playerName;
 
 public:
@@ -22,7 +23,7 @@ public:
     int placeBet();
     void playerTurn();
     void dealerTurn();
-    void determineWinner(int bet);
+    void determineWinner();
 };
 
 #endif /* BLACKJACK_HPP */

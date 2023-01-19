@@ -5,7 +5,8 @@ Blackjack::Blackjack(std::string name)
 {
     playerScore = 0;
     dealerScore = 0;
-    playerChips = 500000;
+    playerChips = 10000;
+    betAmount = -1;
     playerName = name;
 }
 
@@ -13,52 +14,44 @@ void Blackjack::play()
 {
     // TODO: account for aces
 
-    std::cout << "-----------------------------------------------\n\n";
-    int betAmount = placeBet();
+    std::cout << "------------------------------------------------------------\n\n";
+    betAmount = placeBet();
 
     player.clearHand();
     dealer.clearHand();
+
     player.addCard(deck.dealCard());
     player.addCard(deck.dealCard());
     dealer.addCard(deck.dealCard());
 
-    // show dealer's cards
-    std::cout << "Dealer has 1 face down card + ";
-    dealer.printHand();
-    std::cout << "Dealer's total: " << dealer.getTotal() << "\n\n";
-
-    // show player's cards
-    // std::cout << playerName << " drew: ";
+    // show cards
+    dealer.printFirstHand();
     player.printHand(playerName);
-    std::cout << "Your total: " << player.getTotal() << "\n";
 
-    // check for blackjack
-    if (player.getTotal() == 21)
-    {
-        determineWinner(betAmount);
-        return;
-    }
+    // check player for blackjack
+    // if (player.getTotal() == 21)
+    // {
+    //     determineWinner();
+    //     return;
+    // }
 
     playerTurn();
 
     // check for bust
     if (player.getTotal() > 21)
     {
-        std::cout << "\nYou busted! Dealer wins.\n";
+        std::cout << "You busted! Dealer wins.\n";
+        return;
     }
-    // else let dealer play
-    else
-    {
-        dealerTurn();
-        determineWinner(betAmount);
-    }
+
+    dealerTurn();
+    determineWinner();
 }
 
 int Blackjack::placeBet()
 {
     // ask user to place bet
     std::cout << "Place your bet. Your current amount is " << playerChips << " chips left: ";
-    int betAmount;
     std::cin >> betAmount;
 
     // error check. keep asking until user enters a valid amount
@@ -76,9 +69,13 @@ int Blackjack::placeBet()
 
 void Blackjack::playerTurn()
 {
-    while (player.getTotal() < 21)
+    while (player.getTotal() <= 21)
     {
-        // prompt player to hit or stand
+        if (player.getTotal() == 21) {
+            break;
+        }
+
+        // prompt player to hit, stand, or double down
         std::cout << "Would you like to hit (h) or stand (s)? ";
         char move;
         std::cin >> move;
@@ -87,9 +84,14 @@ void Blackjack::playerTurn()
         if (move == 'h')
         {
             player.addCard(deck.dealCard());
-            // std::cout << "\n" << playerName << " drew: ";
+        }
+        // if player doubles down
+        else if (move == 'd') 
+        {
+            player.addCard(deck.dealCard());
             player.printHand(playerName);
-            std::cout << "Your total: " << player.getTotal() << "\n";
+            betAmount *= 2;
+            break;
         }
         // if player stands
         else
@@ -106,35 +108,33 @@ void Blackjack::dealerTurn()
     while (dealer.getTotal() < 17)
     {
         dealer.addCard(deck.dealCard());
-        std::cout << "Dealer drew: ";
         dealer.printHand();
-        std::cout << "Dealer's total: " << dealer.getTotal() << "\n";
     }
 }
 
-void Blackjack::determineWinner(int betAmount)
+void Blackjack::determineWinner()
 {
     // dealer busts
     if (dealer.getTotal() > 21)
     {
-        std::cout << "\nYou won! Dealer busts.\n";
+        std::cout << "You won! Dealer busts.\n";
         playerChips += betAmount * 2;
     }
     // player's hand is higher than dealer's hand
     else if (player.getTotal() > dealer.getTotal())
     {
-        std::cout << "\nYou won!\n";
+        std::cout << "You won!\n";
         playerChips += betAmount * 2;
     }
-    // draw
-    else if (player.getTotal() == dealer.getTotal())
-    {
-        std::cout << "\nYou drew!\n";
-        playerChips += betAmount;
-    }
     // player lost
+    else if (player.getTotal() < dealer.getTotal())
+    {
+        std::cout << "You lost!\n";
+    }
+    // draw
     else
     {
-        std::cout << "\nYou lost!\n";
+        std::cout << "You drew!\n";
+        playerChips += betAmount;
     }
 }
