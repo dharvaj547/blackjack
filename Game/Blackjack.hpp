@@ -14,13 +14,14 @@ private:
     int playerScore;
     int dealerScore;
     int playerChips;
+    std::string playerName;
 
 public:
-    Blackjack();
+    Blackjack(std::string name);
     void play();
     void playerTurn();
     void dealerTurn();
-    void determineWinner();
+    void determineWinner(int bet);
 };
 
 #endif /* BLACKJACK_HPP */
