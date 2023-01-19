@@ -18,7 +18,8 @@ int Hand::getTotal() const
     return total;
 }
 
-void Hand::printHand() {
+void Hand::printHand() 
+{
     std::cout << "[";
 
     for (auto it = cards.begin(); it != cards.end(); ++it) {
@@ -28,6 +29,11 @@ void Hand::printHand() {
         }
     }
     std::cout << "]\n";
+}
+
+void Hand::clearHand() 
+{
+    cards.clear();
 }
 
 
