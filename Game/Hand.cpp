@@ -4,7 +4,7 @@ Hand::Hand() {}
 
 void Hand::addCard(Card c)
 {
-    cards.emplace_back(c);
+    cards.push_back(c);
 }
 
 int Hand::getTotal() const
