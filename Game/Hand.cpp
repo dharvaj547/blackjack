@@ -29,11 +29,10 @@ void Hand::printHand(std::string name) const
         }
     }
     std::cout << "]\n";
-
     printTotal(name);
 }
 
-void Hand::printFirstHand() const 
+void Hand::printFirstHand() const
 {
     std::cout << "Dealer drew [";
     std::cout << cards[0];
@@ -43,12 +42,10 @@ void Hand::printFirstHand() const
 
 void Hand::printTotal(std::string name) const
 {
-    std::cout << name << "'s total: " << getTotal() << "\n";
+    std::cout << name << "'s total: " << getTotal() << "\n\n";
 }
 
-void Hand::clearHand() 
+void Hand::clearHand()
 {
     cards.clear();
 }
-
-
