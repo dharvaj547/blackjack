@@ -19,6 +19,7 @@ private:
 public:
     Blackjack(std::string name);
     void play();
+    int placeBet();
     void playerTurn();
     void dealerTurn();
     void determineWinner(int bet);
