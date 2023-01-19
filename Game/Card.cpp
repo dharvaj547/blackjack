@@ -25,6 +25,7 @@ int Card::getValue() const
 
 std::ostream &operator<<(std::ostream &os, const Card &c)
 {
+    // used to print card names as "Three of Hearts" etc.
     os << c.getRankString() << " of " << c.getSuitString();
     return os;
 }

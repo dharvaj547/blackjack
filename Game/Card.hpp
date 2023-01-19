@@ -11,11 +11,6 @@ enum Suit
     DIAMONDS
 };
 
-const std::string suit_strings[] = {"Spades", 
-                                    "Hearts", 
-                                    "Diamonds", 
-                                    "Clubs"};
-
 enum Rank
 {
     ACE,
@@ -33,6 +28,11 @@ enum Rank
     KING
 };
 
+const std::string suit_strings[] = {"Spades",
+                                    "Hearts",
+                                    "Diamonds",
+                                    "Clubs"};
+                                    
 const std::string rank_strings[] = {"A",
                                     "2",
                                     "3",
