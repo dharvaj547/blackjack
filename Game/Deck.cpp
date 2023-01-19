@@ -4,7 +4,7 @@
 
 Deck::Deck()
 {
-    // number of decks 
+    // number of decks
     for (int i = 0; i < 4; i++)
     {
         // suit
@@ -13,12 +13,10 @@ Deck::Deck()
             // rank
             for (int k = 0; k < 13; k++)
             {
-                cards.push_back(Card(static_cast<Suit>(i), static_cast<Rank>(j)));
+                cards.push_back(Card(static_cast<Suit>(j), static_cast<Rank>(k)));
             }
         }
     }
-
-    shuffle();
 }
 
 void Deck::shuffle()
