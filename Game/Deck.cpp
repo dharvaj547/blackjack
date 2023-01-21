@@ -17,6 +17,8 @@ Deck::Deck()
             }
         }
     }
+
+    shuffle();
 }
 
 void Deck::shuffle()
