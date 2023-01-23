@@ -29,10 +29,10 @@ void Deck::shuffle()
 Card Deck::dealCard()
 {
     /* get a better way of doing this!! */
-    if (this->cards.size() <= 0)
-    {
-        std::cerr << "Deck size has reached less than or below 0\n";
-    }
+    // if (this->cards.size() <= 0)
+    // {
+    //     std::cerr << "Deck size has reached less than or below 0\n";
+    // }
 
     Card dealt = this->cards.back();
     this->cards.pop_back();
