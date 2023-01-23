@@ -2,13 +2,25 @@
 
 Card::Card(Suit s, Rank r) : suit(s), rank(r) { }
 
-Suit Card::getSuit() const { return suit; }
+Suit Card::getSuit() const
+{
+    return suit;
+}
 
-Rank Card::getRank() const { return rank; }
+Rank Card::getRank() const
+{
+    return rank;
+}
 
-std::string Card::getSuitString() const { return suit_strings[suit]; }
+std::string Card::getSuitString() const
+{
+    return suit_strings[suit];
+}
 
-std::string Card::getRankString() const { return rank_strings[rank]; }
+std::string Card::getRankString() const
+{
+    return rank_strings[rank];
+}
 
 int Card::getValue() const
 {
