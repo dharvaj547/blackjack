@@ -5,33 +5,35 @@ Blackjack::Blackjack(std::string name)
 {
     playerChips = 10000;
     betAmount = -1;
-    playerName = name;
+    player = std::make_unique<Hand>(name);
+    dealer = std::make_unique<Hand>();
 }
 
 void Blackjack::play()
 {
-    player.clearHand();
-    dealer.clearHand();
+    player->clearHand();
+    dealer->clearHand();
     betAmount = placeBet();
 
     // deal starting cards
     Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
-    dealer.addCard(deck.dealCard());
-    dealer.addCard(unknownCard);
-    dealer.printHand();
-    dealer.pop(); /* remove the "UNKNOWN" card as it is just for show */
-    player.addCard(deck.dealCard());
-    player.addCard(deck.dealCard());
-    player.printHand(playerName);
+    dealer->addCard(deck.dealCard());
+    dealer->addCard(unknownCard, true);
+    dealer->pop(); /* remove the "UNKNOWN" card as it is just for show */
+    player->addCard(deck.dealCard());
+    player->addCard(deck.dealCard(), true);
 
     // pleminary check for blackjack
-    if (player.getTotal() == 21)
+    if (player->getTotal() == 21)
+    {
+        determineWinner();
         return;
+    }
 
     playerTurn();
 
     // check player for bust
-    if (player.getTotal() > 21)
+    if (player->getTotal() > 21)
     {
         std::cout << "You busted! Dealer wins.\n";
         return;
@@ -44,11 +46,11 @@ void Blackjack::play()
 
 void Blackjack::playerTurn()
 {
-    while (player.getTotal() <= 21)
+    while (player->getTotal() <= 21)
     {
-        if (player.getTotal() == 21)
+        if (player->getTotal() == 21)
         {
-            player.printHand();
+            player->printHand();
             break;
         }
 
@@ -60,14 +62,12 @@ void Blackjack::playerTurn()
         // player hits
         if (move == 'h')
         {
-            player.addCard(deck.dealCard());
-            player.printHand(playerName);
+            player->addCard(deck.dealCard(), true);
         }
         // player doubles down
         else if (move == 'd')
         {
-            player.addCard(deck.dealCard());
-            player.printHand(playerName);
+            player->addCard(deck.dealCard(), true);
             betAmount *= 2;
             break;
         }
@@ -83,29 +83,26 @@ void Blackjack::dealerTurn()
 {
     std::cout << "\n";
 
-    while (dealer.getTotal() < 17)
-    {
-        dealer.addCard(deck.dealCard());
-        dealer.printHand();
-    }
+    while (dealer->getTotal() < 17)
+        dealer->addCard(deck.dealCard(), true);
 }
 
 void Blackjack::determineWinner()
 {
     // dealer busts
-    if (dealer.getTotal() > 21)
+    if (dealer->getTotal() > 21)
     {
         std::cout << "Dealer busts! You win.\n";
         playerChips += betAmount * 2;
     }
     // player wins
-    else if (player.getTotal() > dealer.getTotal())
+    else if (player->getTotal() > dealer->getTotal())
     {
         std::cout << "You win!\n";
         playerChips += betAmount * 2;
     }
     // dealer wins
-    else if (player.getTotal() < dealer.getTotal())
+    else if (player->getTotal() < dealer->getTotal())
     {
         std::cout << "You lose!\n";
     }

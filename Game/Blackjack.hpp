@@ -1,18 +1,19 @@
 #ifndef BLACKJACK_HPP
 #define BLACKJACK_HPP
 
+#include <memory>
 #include "Deck.hpp"
 #include "Hand.hpp"
 
 class Blackjack
 {
 private:
-    Deck deck;
-    Hand player;
-    Hand dealer;
+    std::string playerName;
     int playerChips;
     int betAmount;
-    std::string playerName;
+    Deck deck;
+    std::unique_ptr<Hand> player;
+    std::unique_ptr<Hand> dealer;
 
 public:
     Blackjack(std::string name);
