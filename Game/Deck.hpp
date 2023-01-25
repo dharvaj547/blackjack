@@ -1,6 +1,8 @@
 #ifndef DECK_HPP
 #define DECK_HPP
 
+#define NUMDECKS 4
+
 #include <vector>
 #include "Card.hpp"
 
