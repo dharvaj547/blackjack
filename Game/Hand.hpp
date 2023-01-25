@@ -1,7 +1,6 @@
 #ifndef HAND_HPP
 #define HAND_HPP
 
-#include <iostream>
 #include <vector>
 #include "Card.hpp"
 
@@ -13,11 +12,9 @@ private:
 public:
     Hand();
     void addCard(Card c);
+    void clearHand();
     int getTotal() const;
     void printHand(std::string = "Dealer") const;
-    void printFirstHand() const;
-    void printTotal(std::string = "Dealer") const;
-    void clearHand();   
 };
 
 #endif /* HAND_HPP */

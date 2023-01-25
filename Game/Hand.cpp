@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Hand.hpp"
 
 Hand::Hand() {}
@@ -7,11 +8,17 @@ void Hand::addCard(Card c)
     cards.push_back(c);
 }
 
+void Hand::clearHand()
+{
+    cards.clear();
+}
+
 int Hand::getTotal() const
 {
     int total = 0;
 
-    for (const auto& card : cards) {
+    for (const auto &card : cards)
+    {
         total += card.getValue();
     }
 
@@ -20,32 +27,30 @@ int Hand::getTotal() const
 
 void Hand::printHand(std::string name) const
 {
-    std::cout << name << " drew [";
+    std::cout << name << "'s total: " << getTotal() << "\n";
 
-    for (auto it = cards.begin(); it != cards.end(); ++it) {
-        std::cout << *it;
-        if (std::next(it) != cards.end()) {
-            std::cout << ", ";
-        }
+    for (size_t i = 0; i < cards.size(); i++) {
+        std::cout << " _____   ";
     }
-    std::cout << "]\n";
-    printTotal(name);
-}
+    std::cout << std::endl;
 
-void Hand::printFirstHand() const
-{
-    std::cout << "Dealer drew [";
-    std::cout << cards[0];
-    std::cout << "] + 1 face down card\n";
-    printTotal();
-}
+    for (const auto &card : cards) {
+        std::cout << "|" << card.getRankString() << "    |  ";
+    }
+    std::cout << std::endl;
 
-void Hand::printTotal(std::string name) const
-{
-    std::cout << name << "'s total: " << getTotal() << "\n\n";
-}
+    for (const auto &card : cards) {
+        std::cout << "|  " << card.getSuitString() << "  |  ";
+    }
+    std::cout << std::endl;
 
-void Hand::clearHand()
-{
-    cards.clear();
+    for (const auto &card : cards) {
+        std::cout << "|    " << card.getRankString() << "|  ";
+    }
+    std::cout << std::endl;
+
+    for (size_t i = 0; i < cards.size(); i++) {
+        std::cout << " ‾‾‾‾‾   ";
+    }
+    std::cout << std::endl;
 }
