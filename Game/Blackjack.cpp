@@ -19,7 +19,7 @@ void Blackjack::play()
     Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
     dealer->addCard(deck.dealCard());
     dealer->addCard(unknownCard, true);
-    dealer->pop(); /* remove the "UNKNOWN" card as it is just for show */
+    dealer->pop();  // remove "UNKNOWN" card as it is just for show purposes
     player->addCard(deck.dealCard());
     player->addCard(deck.dealCard(), true);
 
@@ -116,7 +116,6 @@ void Blackjack::determineWinner()
 
 int Blackjack::placeBet()
 {
-    // ask user to place bet
     std::cout << "You have $" << playerChips << ". How much would you like to bet? ";
     std::cin >> betAmount;
 
