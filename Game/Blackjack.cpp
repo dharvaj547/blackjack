@@ -3,8 +3,6 @@
 
 Blackjack::Blackjack(std::string name)
 {
-    playerScore = 0;
-    dealerScore = 0;
     playerChips = 10000;
     betAmount = -1;
     playerName = name;
@@ -14,15 +12,17 @@ void Blackjack::play()
 {
     player.clearHand();
     dealer.clearHand();
-    betAmount = getBet();
+    betAmount = placeBet();
 
     // deal starting cards
-    player.addCard(deck.dealCard());
-    player.addCard(deck.dealCard());
+    Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
+    dealer.addCard(unknownCard);
     dealer.addCard(deck.dealCard());
+    dealer.printHand();
+    dealer.clearFirstCard(); /* remove the "UNKNOWN" card as it is just for show */
 
-    // show starting cards
-    dealer.printFirstHand();
+    player.addCard(deck.dealCard());
+    player.addCard(deck.dealCard());
     player.printHand(playerName);
 
     playerTurn();
@@ -39,12 +39,19 @@ void Blackjack::play()
     determineWinner();
 }
 
-
 void Blackjack::playerTurn()
 {
+    // pleminary check for blackjack
+    if (player.getTotal() == 21)
+    {
+        player.printHand();
+        return;
+    }
+
     while (player.getTotal() <= 21)
     {
-        if (player.getTotal() == 21) {
+        if (player.getTotal() == 21)
+        {
             player.printHand();
             break;
         }
@@ -92,32 +99,32 @@ void Blackjack::determineWinner()
     // dealer busts
     if (dealer.getTotal() > 21)
     {
-        std::cout << "You won! Dealer busts.\n";
+        std::cout << "Dealer busts! You win.\n";
         playerChips += betAmount * 2;
     }
     // player wins
     else if (player.getTotal() > dealer.getTotal())
     {
-        std::cout << "You won!\n";
+        std::cout << "You win!\n";
         playerChips += betAmount * 2;
     }
     // dealer wins
     else if (player.getTotal() < dealer.getTotal())
     {
-        std::cout << "You lost!\n";
+        std::cout << "You lose!\n";
     }
     // draw
     else
     {
-        std::cout << "You drew!\n";
+        std::cout << "You drew! Push.\n";
         playerChips += betAmount;
     }
 }
 
-int Blackjack::getBet()
+int Blackjack::placeBet()
 {
     // ask user to place bet
-    std::cout << "Your have " << playerChips << " chips. How much would you like to bet? ";
+    std::cout << "You have $" << playerChips << ". How much would you like to bet? ";
     std::cin >> betAmount;
 
     // error check. keep asking until user enters a valid amount
@@ -128,7 +135,7 @@ int Blackjack::getBet()
     }
 
     playerChips -= betAmount;
-    std::cout << "You bet " << betAmount << ". You have " << playerChips << " chips remaining.\n\n";
+    std::cout << "You bet $" << betAmount << ". You have $" << playerChips << " remaining.\n\n";
 
     return betAmount;
 }
