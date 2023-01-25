@@ -14,14 +14,14 @@ private:
     Deck deck;
     std::unique_ptr<Hand> player;
     std::unique_ptr<Hand> dealer;
-
-public:
-    Blackjack(std::string name);
-    void play();
     void playerTurn();
     void dealerTurn();
     void determineWinner();
     int placeBet();
+
+public:
+    Blackjack(std::string name);
+    void play();
 };
 
 #endif /* BLACKJACK_HPP */
