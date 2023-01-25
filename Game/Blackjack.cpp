@@ -25,6 +25,10 @@ void Blackjack::play()
     player.addCard(deck.dealCard());
     player.printHand(playerName);
 
+    // pleminary check for blackjack
+    if (player.getTotal() == 21)
+        return;
+
     playerTurn();
 
     // check player for bust
@@ -41,13 +45,6 @@ void Blackjack::play()
 
 void Blackjack::playerTurn()
 {
-    // pleminary check for blackjack
-    if (player.getTotal() == 21)
-    {
-        player.printHand();
-        return;
-    }
-
     while (player.getTotal() <= 21)
     {
         if (player.getTotal() == 21)
