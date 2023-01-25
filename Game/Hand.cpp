@@ -6,7 +6,6 @@ Hand::Hand() : Hand("Dealer") {}
 Hand::Hand(std::string name)
 {
     this->name = name;
-    std::cout << "name: " << this->name << std::endl;
 }
 
 void Hand::addCard(Card c, bool printCards)
