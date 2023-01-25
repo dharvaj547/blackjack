@@ -40,17 +40,17 @@ void Hand::printHand(std::string name) const
     std::cout << std::endl;
 
     for (const auto &card : cards) {
-        std::cout << "|" << card.getRankString() << "    |  ";
+        std::cout << "|" << card.getRank() << "    |  ";
     }
     std::cout << std::endl;
 
     for (const auto &card : cards) {
-        std::cout << "|  " << card.getSuitString() << "  |  ";
+        std::cout << "|  " << card.getSuit() << "  |  ";
     }
     std::cout << std::endl;
 
     for (const auto &card : cards) {
-        std::cout << "|    " << card.getRankString() << "|  ";
+        std::cout << "|    " << card.getRank() << "|  ";
     }
     std::cout << std::endl;
 

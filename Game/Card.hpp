@@ -8,7 +8,8 @@ enum Suit
     SPADES,
     HEARTS,
     CLUBS,
-    DIAMONDS
+    DIAMONDS,
+    UNKNOWNSUIT
 };
 
 enum Rank
@@ -25,13 +26,15 @@ enum Rank
     TEN,
     JACK,
     QUEEN,
-    KING
+    KING,
+    UNKNOWNRANK
 };
 
 const std::string suit_strings[] = {"♠",
                                     "♥",
                                     "♦",
-                                    "♣"};
+                                    "♣",
+                                    "?"};
 
 const std::string rank_strings[] = {"A",
                                     "2",
@@ -45,23 +48,20 @@ const std::string rank_strings[] = {"A",
                                     "10",
                                     "J",
                                     "Q",
-                                    "K"};
+                                    "K",
+                                    "?"};
 
 class Card
 {
 public:
     Card(Suit s, Rank r);
-    Suit getSuit() const;
-    Rank getRank() const;
-    std::string getSuitString() const;
-    std::string getRankString() const;
+    std::string getSuit() const;
+    std::string getRank() const;
     int getValue() const;
 
 private:
     Suit suit;
     Rank rank;
 };
-
-std::ostream &operator<<(std::ostream &os, const Card &c);
 
 #endif /* CARD_HPP */

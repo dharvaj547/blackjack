@@ -2,30 +2,23 @@
 
 Card::Card(Suit s, Rank r) : suit(s), rank(r) { }
 
-Suit Card::getSuit() const
-{
-    return suit;
-}
-
-Rank Card::getRank() const
-{
-    return rank;
-}
-
-std::string Card::getSuitString() const
+std::string Card::getSuit() const
 {
     return suit_strings[suit];
 }
 
-std::string Card::getRankString() const
+std::string Card::getRank() const
 {
     return rank_strings[rank];
 }
 
 int Card::getValue() const
 {
+    // unknown value is worth 0
+    if (rank == UNKNOWNRANK)
+        return 0;
     // aces are worth 1 or 11 points
-    if (rank == ACE)
+    else if (rank == ACE)
         return 11;
     // face cards are worth 10 points
     else if (rank >= JACK)
@@ -33,11 +26,4 @@ int Card::getValue() const
     // all other cards are worth their face value
     else
         return static_cast<int>(rank) + 1;
-}
-
-std::ostream &operator<<(std::ostream &os, const Card &c)
-{
-    // used to print card names as "Three of Hearts" etc.
-    os << c.getRankString() << " of " << c.getSuitString();
-    return os;
 }
