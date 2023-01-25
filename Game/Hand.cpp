@@ -13,6 +13,11 @@ void Hand::clearHand()
     cards.clear();
 }
 
+void Hand::clearFirstCard()
+{
+    cards.erase(cards.begin());
+}
+
 int Hand::getTotal() const
 {
     int total = 0;

@@ -13,6 +13,7 @@ public:
     Hand();
     void addCard(Card c);
     void clearHand();
+    void clearFirstCard();
     int getTotal() const;
     void printHand(std::string = "Dealer") const;
 };
