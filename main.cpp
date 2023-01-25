@@ -3,15 +3,11 @@
 
 int main(int argc, char const *argv[])
 {
-    // TODO: add support to exit game loop
-    // TODO: account for aces
-    // TODO: add ability to split
-    
-    std::cout << "NOTE: press ctrl+c to exit anytime\n";
+    std::cout << "\nNOTE: press ctrl+c to exit anytime\n";
     std::cout << "Please enter your name: ";
     std::string name;
     std::cin >> name;
-    std::cout << "------------------------------------------------------------\n";
+    std::cout << "------------------------------------------------------------------\n";
     std::cout << " _____   _____  _____  _____  " << std::endl
               << "|A    | |A    ||A    ||A    | " << std::endl
               << "|  ♠  | |  ♦  ||  ♣  ||  ♥  | " << std::endl
@@ -23,7 +19,7 @@ int main(int argc, char const *argv[])
 
     while (true)
     {
-        std::cout << "------------------------------------------------------------\n\n";
+        std::cout << "------------------------------------------------------------------\n\n";
         game.play();
     }
 
