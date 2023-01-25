@@ -1,7 +1,6 @@
 #ifndef BLACKJACK_HPP
 #define BLACKJACK_HPP
 
-#include <iostream>
 #include "Deck.hpp"
 #include "Hand.hpp"
 
@@ -11,8 +10,6 @@ private:
     Deck deck;
     Hand player;
     Hand dealer;
-    int playerScore;
-    int dealerScore;
     int playerChips;
     int betAmount;
     std::string playerName;
@@ -20,10 +17,10 @@ private:
 public:
     Blackjack(std::string name);
     void play();
-    int getBet();
     void playerTurn();
     void dealerTurn();
     void determineWinner();
+    int placeBet();
 };
 
 #endif /* BLACKJACK_HPP */
