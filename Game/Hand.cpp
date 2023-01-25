@@ -1,11 +1,20 @@
 #include <iostream>
 #include "Hand.hpp"
 
-Hand::Hand() {}
+Hand::Hand() : Hand("Dealer") {}
 
-void Hand::addCard(Card c)
+Hand::Hand(std::string name)
+{
+    this->name = name;
+    std::cout << "name: " << this->name << std::endl;
+}
+
+void Hand::addCard(Card c, bool printCards)
 {
     cards.push_back(c);
+
+    if (printCards)
+        printHand();
 }
 
 void Hand::clearHand()
@@ -30,7 +39,7 @@ int Hand::getTotal() const
     return total;
 }
 
-void Hand::printHand(std::string name) const
+void Hand::printHand() const
 {
     std::cout << name << "'s total: " << getTotal() << "\n";
 

@@ -8,14 +8,16 @@ class Hand
 {
 private:
     std::vector<Card> cards;
+    std::string name;
 
 public:
     Hand();
-    void addCard(Card c);
+    Hand(std::string name);
+    void addCard(Card c, bool printCards = false);
     void clearHand();
     void pop();
     int getTotal() const;
-    void printHand(std::string = "Dealer") const;
+    void printHand() const;
 };
 
 #endif /* HAND_HPP */
