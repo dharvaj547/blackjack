@@ -13,9 +13,9 @@ void Hand::clearHand()
     cards.clear();
 }
 
-void Hand::clearFirstCard()
+void Hand::pop()
 {
-    cards.erase(cards.begin());
+    cards.pop_back();
 }
 
 int Hand::getTotal() const

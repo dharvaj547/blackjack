@@ -16,11 +16,10 @@ void Blackjack::play()
 
     // deal starting cards
     Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
-    dealer.addCard(unknownCard);
     dealer.addCard(deck.dealCard());
+    dealer.addCard(unknownCard);
     dealer.printHand();
-    dealer.clearFirstCard(); /* remove the "UNKNOWN" card as it is just for show */
-
+    dealer.pop(); /* remove the "UNKNOWN" card as it is just for show */
     player.addCard(deck.dealCard());
     player.addCard(deck.dealCard());
     player.printHand(playerName);
