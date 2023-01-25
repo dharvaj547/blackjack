@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Card.hpp"
 
 Card::Card(Suit s, Rank r) : suit(s), rank(r) { }
