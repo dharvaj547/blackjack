@@ -68,6 +68,7 @@ void Blackjack::playerTurn()
         else if (move == 'd')
         {
             player->addCard(deck.dealCard(), true);
+            playerChips -= betAmount;
             betAmount *= 2;
             break;
         }
