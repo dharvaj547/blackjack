@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Blackjack.hpp"
 
-Blackjack::Blackjack(std::string name)
+Blackjack::Blackjack(const std::string& name)
 {
     playerChips = 10000;
     betAmount = -1;
@@ -17,11 +17,11 @@ void Blackjack::play()
 
     // deal starting cards
     Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
-    dealer->addCard(deck.dealCard());
+    dealer->addCard(deck.getDealCard());
     dealer->addCard(unknownCard, true);
     dealer->pop();  // remove "UNKNOWN" card as it is just for show purposes
-    player->addCard(deck.dealCard());
-    player->addCard(deck.dealCard(), true);
+    player->addCard(deck.getDealCard());
+    player->addCard(deck.getDealCard(), true);
 
     // pleminary check for blackjack
     if (player->getTotal() == 21)
@@ -62,12 +62,12 @@ void Blackjack::playerTurn()
         // player hits
         if (move == 'h')
         {
-            player->addCard(deck.dealCard(), true);
+            player->addCard(deck.getDealCard(), true);
         }
         // player doubles down
         else if (move == 'd')
         {
-            player->addCard(deck.dealCard(), true);
+            player->addCard(deck.getDealCard(), true);
             playerChips -= betAmount;
             betAmount *= 2;
             break;
@@ -85,7 +85,7 @@ void Blackjack::dealerTurn()
     std::cout << "\n";
 
     while (dealer->getTotal() < 17)
-        dealer->addCard(deck.dealCard(), true);
+        dealer->addCard(deck.getDealCard(), true);
 }
 
 void Blackjack::determineWinner()
