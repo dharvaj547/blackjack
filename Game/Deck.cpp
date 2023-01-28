@@ -26,14 +26,8 @@ void Deck::shuffle()
     std::shuffle(this->cards.begin(), this->cards.end(), std::random_device());
 }
 
-Card Deck::dealCard()
+Card Deck::getDealCard()
 {
-    /* get a better way of doing this!! */
-    // if (this->cards.size() <= 0)
-    // {
-    //     std::cerr << "Deck size has reached less than or below 0\n";
-    // }
-
     Card dealt = this->cards.back();
     this->cards.pop_back();
 

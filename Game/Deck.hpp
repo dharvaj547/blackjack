@@ -14,7 +14,7 @@ private:
 
 public:
   Deck();
-  Card dealCard();
+  Card getDealCard();
 };
 
 #endif /* DECK_HPP */
