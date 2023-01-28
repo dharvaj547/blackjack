@@ -2,13 +2,14 @@
 #define BLACKJACK_HPP
 
 #include <memory>
+#include <string>
 #include "Deck.hpp"
 #include "Hand.hpp"
 
 class Blackjack
 {
 private:
-    std::string playerName;
+    const std::string playerName;
     int playerChips;
     int betAmount;
     Deck deck;
@@ -20,7 +21,7 @@ private:
     int placeBet();
 
 public:
-    Blackjack(std::string name);
+    Blackjack(const std::string& name);
     void play();
 };
 
