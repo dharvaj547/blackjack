@@ -2,6 +2,7 @@
 #define HAND_HPP
 
 #include <vector>
+#include <string>
 #include "Card.hpp"
 
 class Hand
@@ -12,7 +13,7 @@ private:
 
 public:
     Hand();
-    Hand(std::string name);
+    Hand(const std::string& name);
     void addCard(Card c, bool printCards = false);
     void clearHand();
     void pop();

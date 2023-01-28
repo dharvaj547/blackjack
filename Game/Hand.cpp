@@ -3,7 +3,7 @@
 
 Hand::Hand() : Hand("Dealer") {}
 
-Hand::Hand(std::string name)
+Hand::Hand(const std::string& name)
 {
     this->name = name;
 }
