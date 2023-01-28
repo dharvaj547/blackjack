@@ -10,6 +10,7 @@ class Hand
 private:
     std::vector<Card> cards;
     std::string name;
+    void printHand() const;
 
 public:
     Hand();
@@ -18,7 +19,6 @@ public:
     void clearHand();
     void pop();
     int getTotal() const;
-    void printHand() const;
 };
 
 #endif /* HAND_HPP */
