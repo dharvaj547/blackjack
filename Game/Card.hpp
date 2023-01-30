@@ -9,7 +9,7 @@ enum Suit
     HEARTS,
     CLUBS,
     DIAMONDS,
-    UNKNOWNSUIT
+    FACEDOWNSUIT
 };
 
 enum Rank
@@ -27,7 +27,7 @@ enum Rank
     JACK,
     QUEEN,
     KING,
-    UNKNOWNRANK
+    FACEDOWNRANK
 };
 
 const std::string suit_strings[] = {"♠",

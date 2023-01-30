@@ -16,10 +16,10 @@ void Blackjack::play()
     betAmount = placeBet();
 
     // deal starting cards
-    Card unknownCard(Suit::UNKNOWNSUIT, Rank::UNKNOWNRANK);
+    Card faceDownCard(Suit::FACEDOWNSUIT, Rank::FACEDOWNRANK);
     dealer->addCard(deck.getDealCard());
-    dealer->addCard(unknownCard, true);
-    dealer->pop();  // remove "UNKNOWN" card as it is just for show purposes
+    dealer->addCard(faceDownCard, true);
+    dealer->pop();  // remove face down card
     player->addCard(deck.getDealCard());
     player->addCard(deck.getDealCard(), true);
 
