@@ -1,7 +1,6 @@
 #ifndef BLACKJACK_HPP
 #define BLACKJACK_HPP
 
-#include <memory>
 #include <string>
 #include "Deck.hpp"
 #include "Hand.hpp"
@@ -13,8 +12,8 @@ private:
     int playerChips;
     int betAmount;
     Deck deck;
-    std::unique_ptr<Hand> player;
-    std::unique_ptr<Hand> dealer;
+    Hand player;
+    Hand dealer;
     void playerTurn();
     void dealerTurn();
     void determineWinner();
