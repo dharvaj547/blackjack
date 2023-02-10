@@ -15,7 +15,7 @@ std::string Card::getRank() const
 
 int Card::getValue() const
 {
-    // unknown value is worth 0
+    // facedown cards are worth 0
     if (rank == FACEDOWNRANK)
         return 0;
     // aces are worth 1 or 11 points
