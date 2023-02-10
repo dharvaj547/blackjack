@@ -1,19 +1,16 @@
 # Blackjack game
-Blakcjack game written in C++.
+A terminal based Blackjack clone written in C++.
 
 # Running
-Ensure that you are running at least C++11 
-
-Clone the repository
-
-Open terminal and navigate to the project
-
-Run ```make play``` in terminal to play the game
+- Ensure that you are running at least C++11 
+- Clone the repository
+- Open terminal and to the project directory
+- Run ```make play``` in terminal to play the game
 
 Errors caused here are most likely caused by the Makefile. Read "Makefile for macOS and windows" for fixes.  
 
 # Makefile for macOS and windows
-The given Makefile is for windows system (as I use a windows laptop). If you are on a mac, your Makefile may look something like 
+The given Makefile is for windows system. If you are using a mac, your Makefile might look something like 
 ```
 CXX = g++
 CXXFLAGS = -Wall -g
@@ -31,11 +28,9 @@ play: clean blackjack
 clean:
 	rm -f blackjack
 ```
-Note that ```CXX = g++``` is actually ```CXX = g++-11``` on my mac laptop as this ensures that my compiler is running C++17. Please make sure that you change this to whichever command allows your compiler to use at least C++11.
+Make sure that you use the correct flag which ensures you are running at least C++11. For me ```CXX = g++``` had to be changed to ```CXX = g++-11``` but this might be different for you. 
 
-# Gameplay
-
-
-
-# To do
-
+# TODO
+- add some feature to exit the game at any time (instead of ctrl+c everytime)
+- fix some known bugs
+- add feature for card counting
