@@ -47,10 +47,7 @@ void Blackjack::playerTurn()
     while (player.getTotal() < 21)
     {
         if (player.getTotal() == 21)
-        {
-            // player->printHand();
             break;
-        }
 
         // prompt player to hit, stand, or double down
         std::cout << "Would you like to hit (h), stand (s), or double down (d)? ";
