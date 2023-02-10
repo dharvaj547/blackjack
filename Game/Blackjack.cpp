@@ -46,6 +46,12 @@ void Blackjack::playerTurn()
 {
     while (player.getTotal() < 21)
     {
+        if (player.getTotal() == 21)
+        {
+            // player->printHand();
+            break;
+        }
+
         // prompt player to hit, stand, or double down
         std::cout << "Would you like to hit (h), stand (s), or double down (d)? ";
         char move;
@@ -109,7 +115,7 @@ void Blackjack::determineWinner()
 
 int Blackjack::placeBet()
 {
-    std::cout << "You have $" << playerChips << ". How much would you like to bet? ";
+    std::cout << "Your balance: $" << playerChips << "\nPlace your bet: $";
     std::cin >> betAmount;
 
     // error check. keep asking until user enters a valid amount
@@ -120,7 +126,7 @@ int Blackjack::placeBet()
     }
 
     playerChips -= betAmount;
-    std::cout << "You bet $" << betAmount << ". You have $" << playerChips << " remaining.\n\n";
+    std::cout << "\nYou have $" << betAmount << " remaining.\n\n";
 
     return betAmount;
 }
