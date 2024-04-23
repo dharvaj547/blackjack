@@ -29,26 +29,26 @@ enum Rank
     FACEDOWNRANK
 };
 
-const std::string suit_strings[] = {"♠",
-                                    "♥",
-                                    "♦",
-                                    "♣",
-                                    "?"};
+constexpr const char* suit_strings[] = {"♠",
+                                        "♥",
+                                        "♦",
+                                        "♣",
+                                        "?"};
 
-const std::string rank_strings[] = {"A",
-                                    "2",
-                                    "3",
-                                    "4",
-                                    "5",
-                                    "6",
-                                    "7",
-                                    "8",
-                                    "9",
-                                    "T",
-                                    "J",
-                                    "Q",
-                                    "K",
-                                    "?"};
+constexpr const char* rank_strings[] = {"A",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5",
+                                        "6",
+                                        "7",
+                                        "8",
+                                        "9",
+                                        "T",
+                                        "J",
+                                        "Q",
+                                        "K",
+                                        "?"};
 
 class Card
 {
