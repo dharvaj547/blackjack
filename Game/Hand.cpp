@@ -43,6 +43,12 @@ void Hand::printHand() const
 {
     std::cout << name << "'s total: " << getTotal() << "\n";
 
+    // print cards in the following format:
+    //  _____    _____
+    // |K    |  |A    |
+    // |  ♦  |  |  ♦  |
+    // |    K|  |    A|
+    //  ‾‾‾‾‾    ‾‾‾‾‾
     for (size_t i = 0; i < cards.size(); i++)
     {
         std::cout << " _____   ";
