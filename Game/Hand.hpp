@@ -14,7 +14,7 @@ private:
 
 public:
     Hand();
-    Hand(const std::string& name);
+    explicit Hand(std::string name);
     void addCard(Card c, bool printCards = false);
     void clearHand();
     void pop();
