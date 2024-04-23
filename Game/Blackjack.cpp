@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "Blackjack.hpp"
 
 Blackjack::Blackjack(const std::string& name)
@@ -14,15 +15,17 @@ void Blackjack::play()
     dealer.clearHand();
     betAmount = placeBet();
 
-    // deal starting cards
+    // dealer is dealt one face up card and one face down card
     Card faceDownCard(Suit::FACEDOWNSUIT, Rank::FACEDOWNRANK);
     dealer.addCard(deck.getDealCard());
     dealer.addCard(faceDownCard, true);
-    dealer.pop();  // remove face down card
+    dealer.pop();  // remove face down card (as it has no value) after printing
+
+    // deal player cards
     player.addCard(deck.getDealCard());
     player.addCard(deck.getDealCard(), true);
 
-    // pleminary check for blackjack
+    // preliminary check for blackjack
     if (player.getTotal() == 21)
     {
         determineWinner();
@@ -46,9 +49,6 @@ void Blackjack::playerTurn()
 {
     while (player.getTotal() < 21)
     {
-        if (player.getTotal() == 21)
-            break;
-
         // prompt player to hit, stand, or double down
         std::cout << "Would you like to hit (h), stand (s), or double down (d)? ";
         char move;
@@ -77,10 +77,11 @@ void Blackjack::playerTurn()
 
 void Blackjack::dealerTurn()
 {
-    std::cout << "\n";
-
+    bool printCards = true;
     while (dealer.getTotal() < 17)
-        dealer.addCard(deck.getDealCard(), true);
+    {
+        dealer.addCard(deck.getDealCard(), printCards);
+    }
 }
 
 void Blackjack::determineWinner()
