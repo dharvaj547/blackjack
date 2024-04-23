@@ -1,17 +1,17 @@
 #pragma once
 
-#define NUMDECKS 4
-
 #include <vector>
+
 #include "Card.hpp"
 
 class Deck
 {
 private:
-  std::vector<Card> cards;
-  void shuffle();
+    static constexpr int NUMDECKS = 4;
+    std::vector<Card> deck;
+    void shuffle();
 
 public:
-  Deck();
-  Card getDealCard();
+    Deck();
+    Card getDealCard();
 };
