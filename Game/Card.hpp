@@ -1,5 +1,4 @@
-#ifndef CARD_HPP
-#define CARD_HPP
+#pragma once
 
 #include <string>
 
@@ -45,7 +44,7 @@ const std::string rank_strings[] = {"A",
                                     "7",
                                     "8",
                                     "9",
-                                    "10",
+                                    "T",
                                     "J",
                                     "Q",
                                     "K",
@@ -63,5 +62,3 @@ private:
     Suit suit;
     Rank rank;
 };
-
-#endif /* CARD_HPP */

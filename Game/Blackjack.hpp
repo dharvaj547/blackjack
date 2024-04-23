@@ -1,7 +1,7 @@
-#ifndef BLACKJACK_HPP
-#define BLACKJACK_HPP
+#pragma once
 
 #include <string>
+
 #include "Deck.hpp"
 #include "Hand.hpp"
 
@@ -23,5 +23,3 @@ public:
     Blackjack(const std::string& name);
     void play();
 };
-
-#endif /* BLACKJACK_HPP */

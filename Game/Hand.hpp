@@ -1,8 +1,8 @@
-#ifndef HAND_HPP
-#define HAND_HPP
+#pragma once
 
 #include <vector>
 #include <string>
+
 #include "Card.hpp"
 
 class Hand
@@ -20,5 +20,3 @@ public:
     void pop();
     int getTotal() const;
 };
-
-#endif /* HAND_HPP */

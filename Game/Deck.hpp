@@ -1,5 +1,4 @@
-#ifndef DECK_HPP
-#define DECK_HPP
+#pragma once
 
 #define NUMDECKS 4
 
@@ -16,5 +15,3 @@ public:
   Deck();
   Card getDealCard();
 };
-
-#endif /* DECK_HPP */
