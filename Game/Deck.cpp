@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <random>
+
 #include "Deck.hpp"
 
 Deck::Deck()
@@ -13,7 +14,7 @@ Deck::Deck()
             // rank
             for (int k = 0; k < 13; k++)
             {
-                cards.push_back(Card(static_cast<Suit>(j), static_cast<Rank>(k)));
+                deck.push_back(Card(static_cast<Suit>(j), static_cast<Rank>(k)));
             }
         }
     }
@@ -23,13 +24,14 @@ Deck::Deck()
 
 void Deck::shuffle()
 {
-    std::shuffle(this->cards.begin(), this->cards.end(), std::random_device());
+    std::shuffle(deck.begin(), deck.end(), std::random_device());
 }
 
 Card Deck::getDealCard()
 {
-    Card dealt = this->cards.back();
-    this->cards.pop_back();
+    // deal a card from the top of the deck, and the remove it from the deck
+    Card dealtCard = deck.back();
+    deck.pop_back();
 
-    return dealt;
+    return dealtCard;
 }
