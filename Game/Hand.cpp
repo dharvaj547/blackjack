@@ -27,7 +27,7 @@ void Hand::pop()
     cards.pop_back();
 }
 
-int Hand::getTotal() const
+[[nodiscard]] int Hand::getTotal() const
 {
     int total = 0;
 

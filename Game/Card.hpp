@@ -54,9 +54,9 @@ class Card
 {
 public:
     Card(Suit s, Rank r);
-    std::string getSuit() const;
-    std::string getRank() const;
-    int getValue() const;
+    [[nodiscard]] std::string getSuit() const;
+    [[nodiscard]] std::string getRank() const;
+    [[nodiscard]] int getValue() const;
 
 private:
     Suit suit;

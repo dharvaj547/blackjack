@@ -4,17 +4,17 @@
 
 Card::Card(Suit s, Rank r) : suit(s), rank(r) { }
 
-std::string Card::getSuit() const
+[[nodiscard]] std::string Card::getSuit() const
 {
     return suit_strings[suit];
 }
 
-std::string Card::getRank() const
+[[nodiscard]] std::string Card::getRank() const
 {
     return rank_strings[rank];
 }
 
-int Card::getValue() const
+[[nodiscard]] int Card::getValue() const
 {
     // facedown cards are worth 0
     if (rank == FACEDOWNRANK)

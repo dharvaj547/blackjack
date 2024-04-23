@@ -18,5 +18,5 @@ public:
     void addCard(Card c, bool printCards = false);
     void clearHand();
     void pop();
-    int getTotal() const;
+    [[nodiscard]] int getTotal() const;
 };
