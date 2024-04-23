@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Game/Blackjack.hpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
     std::cout << "\nPlease enter your name: ";
     std::string name;
