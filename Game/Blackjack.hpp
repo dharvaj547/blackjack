@@ -20,6 +20,6 @@ private:
     int placeBet();
 
 public:
-    Blackjack(const std::string& name);
+    explicit Blackjack(const std::string& name);
     void play();
 };
