@@ -1,17 +1,14 @@
 cmake_minimum_required(VERSION 3.27)
-project(blackjack)
+project(blackjack_)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(Game)
-
-add_executable(blackjack
-        Game/Blackjack.cpp
-        Game/Blackjack.hpp
-        Game/Card.cpp
-        Game/Card.hpp
-        Game/Deck.cpp
-        Game/Deck.hpp
-        Game/Hand.cpp
-        Game/Hand.hpp
-        main.cpp)
+add_executable(blackjack_ main.cpp
+        src/Game.cpp
+        src/Game.h
+        src/Player.cpp
+        src/Player.h
+        src/Deck.cpp
+        src/Deck.h
+        src/Card.cpp
+        src/Card.h)
